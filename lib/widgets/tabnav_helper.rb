@@ -66,6 +66,8 @@ module Widgets
           tab.html[:class] = 'disabled'
         elsif tab.highlighted?(params)
           tab.html[:class] = 'active'
+          # Render the partial for ye ol tab yo
+          content_for(:ribbon, render(:partial => tab.ribbon_partial_path)) if tab.ribbon_partial_path
         end
             
         li_options = tab.html[:id] ? {:id => tab.html[:id] + '_container'} : {} 

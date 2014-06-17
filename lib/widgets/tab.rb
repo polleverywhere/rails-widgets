@@ -2,7 +2,7 @@ module Widgets
   class Tab
     include Highlightable
     include Disableable
-    attr_accessor :link, :remote_link, :name, :html
+    attr_accessor :link, :remote_link, :name, :html, :ribbon_partial_path
     
     def initialize(opts={})
       @name = opts[:name] 
@@ -21,6 +21,8 @@ module Widgets
       self.highlights << @link if link? # it does highlight on itself
       raise ArgumentError, 'you must provide a name' unless @name
     end
+    
+    def ribbon(partial_path); @ribbon_partial_path = partial_path; end;
     
     # title is a shortcut to html[:title]
     def title; @html[:title]; end
