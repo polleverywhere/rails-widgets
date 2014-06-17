@@ -38,9 +38,9 @@ module Widgets
   
       instance_eval(&proc) 
       out @_tabnav.default_css if @_tabnav.generate_css?  
-      out tag('div',@_tabnav.html ,true)
+      out tag('ul',@_tabnav.html ,true)
       render_tabnav_tabs 
-      out "</div>\n"
+      out "</ul>\n"
       nil
     end 
   
@@ -61,8 +61,6 @@ module Widgets
      
     # renders the tabnav's tabs
     def render_tabnav_tabs
-      out tag('ul', {} , true)
-    
       @_tabnav.tabs.each do |tab|      
         if tab.disabled?
           tab.html[:class] = 'disabled'
@@ -81,7 +79,6 @@ module Widgets
         end 
         out "</li> \n"
       end 
-      out '</ul>'
     end  
      
     def out(string); concat string; end
