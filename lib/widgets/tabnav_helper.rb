@@ -21,7 +21,7 @@ module Widgets
         concat( html, block.binding)
         nil # avoid duplication if called with <%= %>
       else
-        return html
+        return html.html_safe
       end
     end
 
@@ -40,7 +40,7 @@ module Widgets
       out @_tabnav.default_css if @_tabnav.generate_css?
       out tag('ul',@_tabnav.html ,true)
       render_tabnav_tabs
-      out "</ul>\n"
+      out "</ul>\n".html_safe
       nil
     end
 
@@ -52,7 +52,7 @@ module Widgets
 
     # inspects controller names
     def controller_names
-      files = Dir.entries(File.join(RAILS_ROOT, 'app/controllers'))
+      files = Dir.entries(File.join(Rails.root, 'app/controllers'))
       controllers = files.select {|x| x.match '_controller.rb'}
       return controllers.map {|x| x.sub '_controller.rb', ''}.sort
     end
@@ -79,7 +79,7 @@ module Widgets
         else
           raise "WHAT THE HELL?"
         end
-        out "</li> \n"
+        out "</li> \n".html_safe
       end
     end
 

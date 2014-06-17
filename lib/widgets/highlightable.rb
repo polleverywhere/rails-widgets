@@ -25,7 +25,7 @@ module Widgets
       # takes in input a Hash (usually params)
       # or a string/Proc that evaluates to true/false
       # it does ignore some params like 'only_path' etc..
-      # we have to do this in orderr to support restful routes
+      # we have to do this in order to support restful routes
       def highlighted? options={}
         option = clean_unwanted_keys(options)
         #puts "### '#{name}'.highlighted? #{options.inspect}"
