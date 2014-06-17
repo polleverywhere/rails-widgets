@@ -76,18 +76,6 @@ module Widgets
           out content_tag('span', tab.name, tab.html) 
         elsif !tab.link.empty?
           out link_to(tab.name, tab.link, tab.html)
-        elsif tab.remote_link
-          success = "document.getElementsByClassName('active', $('" + @_tabnav.html[:id]+ "')).each(function(item){item.removeClassName('active');});"
-          success += "$('#{tab.html[:id]}').addClassName('active');"
-          # success += "alert(this);"
-          
-          remote_opts = {:update => @_tabnav.html[:id] + '_content',
-           # :success => success, 
-            :method => :get,
-            :loading => loading_function + success,
-            :loaded => "$('#{@_tabnav.html[:id]}_content').setStyle({height: 'auto'});"
-          }
-          out link_to_remote(tab.name, remote_opts.merge(tab.remote_link), tab.html)
         else
           raise "WHAT THE HELL?"
         end 
