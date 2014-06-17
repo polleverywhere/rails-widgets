@@ -1,5 +1,5 @@
 The tabnav generator creates a sample Tabnav partial.
-      
+
 invoke with:  ./script/generate tabnav <name>
          es:  ./script/generate tabnav main
 
@@ -10,5 +10,5 @@ Usage:
     <% tabnav :main do %>
        your html here
     <% end %>
- 
+
     <%= tabnav :main %>

@@ -2,21 +2,21 @@ require File.dirname(__FILE__) + '/test_helper'
 
 class TableizeHelperTest < Test::Unit::TestCase
   include Widgets
-  
+
   EXPECTED_INSTANCE_METHODS = %w{tableize}
-  
+
   def setup
     @view = ActionView::Base.new
     @view.extend ApplicationHelper
     @view.extend TableHelper
   end
-  
+
   def test_presence_of_instance_methods
     EXPECTED_INSTANCE_METHODS.each do |instance_method|
-      assert @view.respond_to?(instance_method), "#{instance_method} is not defined in #{@controller.inspect}" 
-    end     
-  end  
-  
+      assert @view.respond_to?(instance_method), "#{instance_method} is not defined in #{@controller.inspect}"
+    end
+  end
+
   def test_should_fail_if_wrong_args
     assert_raise(ArgumentError) do
       @view.tableize nil
@@ -35,8 +35,8 @@ class TableizeHelperTest < Test::Unit::TestCase
         # nothing
       end
     end
-  end  
-  
+  end
+
   def test_block_invariance
     _erbout = ''
     assert_nothing_raised do
@@ -49,8 +49,8 @@ class TableizeHelperTest < Test::Unit::TestCase
       @view.tableize(['IS', 'Same!', 'Thing?'], :name => :the_name) { |i| _erbout.concat i }
     end
     assert_dom_equal expected, _erbout, 'Block vs Proc generation differs'
-  end   
-  
+  end
+
   def test_empty_layout
     _erbout = ''
     @view.tableize [], :cols => 2, :name => :empty_layout do |i|
@@ -62,9 +62,9 @@ class TableizeHelperTest < Test::Unit::TestCase
         assert_select 'tr', :count => 1
         assert_select 'tr td', :count => 0
       end
-    end  
+    end
   end
-  
+
   def test_1_item_layout
     _erbout = ''
     @view.tableize [1], :name => '1_item_layout' do |i|
@@ -80,12 +80,12 @@ class TableizeHelperTest < Test::Unit::TestCase
           assert_select 'td.blank:last-of-type', '&nbsp;'
         end
       end
-    end  
-  end 
-  
+    end
+  end
+
   def test_row_less_1_item_layout
     _erbout = ''
-    @view.tableize %w{1 2 3 4 5}, :cols => 6, :name => 'row_less_1_item_layout' do |i| 
+    @view.tableize %w{1 2 3 4 5}, :cols => 6, :name => 'row_less_1_item_layout' do |i|
       _erbout.concat i.to_s
     end
     root = HTML::Document.new(_erbout).root
@@ -100,13 +100,13 @@ class TableizeHelperTest < Test::Unit::TestCase
           assert_select 'td:nth-of-type(5)', '5'
           assert_select 'td.blank:last-of-type', '&nbsp;'
         end
-      end   
+      end
   end
-  end  
-  
+  end
+
   def test_full_row_layout
     _erbout = ''
-    @view.tableize %w{1 2 3 4 5}, :cols => 5, :name => :full_row_layout  do |i| 
+    @view.tableize %w{1 2 3 4 5}, :cols => 5, :name => :full_row_layout  do |i|
       _erbout.concat i.to_s
     end
     root = HTML::Document.new(_erbout).root
@@ -122,11 +122,11 @@ class TableizeHelperTest < Test::Unit::TestCase
         end
       end
     end
-  end  
-  
+  end
+
   def test_row_plus_1_item_layout
     _erbout = ''
-    @view.tableize %w{1 2 3 4 5}, :cols => 4, :name=> 'row_plus_1_item_layout' do |i| 
+    @view.tableize %w{1 2 3 4 5}, :cols => 4, :name=> 'row_plus_1_item_layout' do |i|
       _erbout.concat i.to_s
     end
     root = HTML::Document.new(_erbout).root
@@ -147,17 +147,17 @@ class TableizeHelperTest < Test::Unit::TestCase
         end
       end
     end
-  end  
-  
+  end
+
   def test_options
     _erbout = ''
     @view.tableize nil,
-    :name => :options, 
-    :collection => %w{1 2 3 4 5}, 
+    :name => :options,
+    :collection => %w{1 2 3 4 5},
     :generate_css => true,
     :header => 'TiTlE',
     :html => {:id => 'number', :class => 'demo'},
-    :cols => 4 do |i| 
+    :cols => 4 do |i|
       _erbout.concat i.to_s
     end
     root = HTML::Document.new(_erbout).root
@@ -182,6 +182,6 @@ class TableizeHelperTest < Test::Unit::TestCase
         end
       end
     end
-  end  
-  
+  end
+
 end

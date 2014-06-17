@@ -1,8 +1,8 @@
-module Widgets 
+module Widgets
   class Navigation
     attr_accessor :name, :items, :html, :separator
     include CssTemplate
-    
+
     def initialize(name, opts={})
       @name = name
       @items = []
@@ -12,11 +12,11 @@ module Widgets
       @html[:class] ||= @html[:id]
       @separator = opts[:separator] ||= '&nbsp;|'
     end
-    
+
     def add_item opts={}
       @items ||= []
       @items << NavigationItem.new(opts)
     end
-  
+
   end
 end

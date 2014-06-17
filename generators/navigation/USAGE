@@ -1,5 +1,5 @@
 The navigation generator creates a sample navigation partial.
-      
+
 invoke with:  ./script/generate navigation <name>
          es:  ./script/generate navigation main
 

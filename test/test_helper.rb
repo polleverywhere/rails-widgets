@@ -8,9 +8,9 @@ def assert_html expected, actual
     expected = clean_html(expected)
     actual = clean_html(actual)
     assert_equal expected, actual
-end  
-  
+end
+
 def clean_html(html_string)
   return html_string.strip.gsub(/[\n\r]/, '').gsub(/>\s+</, '><')
 end
-  
+
