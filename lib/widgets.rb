@@ -1,5 +1,4 @@
 # Widgets
-require 'widgets/core'
 require 'widgets/css_template'
 require 'widgets/highlightable'
 require 'widgets/disableable'
@@ -28,9 +27,3 @@ ActionController::Base.helper Widgets::TableHelper
 ##### ShowHide #####
 require 'widgets/showhide_helper'
 ActionController::Base.helper Widgets::ShowhideHelper
-
-##### Tooltip #####
-require 'widgets/tooltip_helper'
-ActionController::Base.helper Widgets::TooltipHelper
-
-
