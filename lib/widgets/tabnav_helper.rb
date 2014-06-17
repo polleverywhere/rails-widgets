@@ -96,7 +96,7 @@ module Widgets
       out '</ul>'
     end  
      
-    def out(string); concat string, @_binding; end
+    def out(string); concat string; end
     
     # generate javascript function to use 
     # while loading remote tabs
