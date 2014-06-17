@@ -1,4 +1,14 @@
 Widgets
 =======
 
-Description goes here
+This provides render_tabnav
+
+Forked from https://github.com/paolodona/rails-widgets
+
+which was from originally at http://code.google.com/p/rails-widgets
+
+which was the successor to tabnav
+
+https://web.archive.org/web/20071012013546/http://blog.seesaw.it/articles/2007/09/03/what-changes-in-the-new-widgets-tabnav
+
+And was subsequently vendored as a plugin and modified over the years into its present form
