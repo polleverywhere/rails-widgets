@@ -19,11 +19,6 @@ ActionController::Base.helper Widgets::TabnavHelper
 require 'widgets/table_helper'
 ActionController::Base.helper Widgets::TableHelper
 
-##### Code #####
-# not enabled by default because it depends on the Syntax gem
-# require 'widgets/code_helper'
-# ActionController::Base.helper Widgets::CodeHelper
-
 ##### ShowHide #####
 require 'widgets/showhide_helper'
 ActionController::Base.helper Widgets::ShowhideHelper
