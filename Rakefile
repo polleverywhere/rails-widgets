@@ -1,3 +1,9 @@
+begin
+    require 'bundler/setup'
+rescue LoadError
+    puts 'You must `gem install bundler` and `bundle install` to run rake tasks'
+end
+
 require 'rake/testtask'
 desc 'Test the widgets plugin.'
 Rake::TestTask.new(:test) do |t|
@@ -23,3 +29,5 @@ begin
 rescue LoadError, StandardError => e
   warn "Setting up rdoc failed #{e.class}: #{e.message}: #{__FILE__}:#{__LINE__}"
 end
+
+Bundler::GemHelper.install_tasks
